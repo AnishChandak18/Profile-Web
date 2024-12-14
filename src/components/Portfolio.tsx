@@ -15,7 +15,7 @@ const Portfolio: React.FC = () => {
   return (
     <section id="portfolio" className="relative py-20 bg-white dark:bg-midnight-900">
       <BackgroundPattern />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial="initial"
@@ -34,18 +34,17 @@ const Portfolio: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setFilter(category as typeof filter)}
-                className={`px-4 py-2 rounded-lg shadow-md transition-all ${
-                  filter === category
-                    ? 'bg-primary-600 text-white shadow-primary-500/25'
-                    : 'bg-white dark:bg-midnight-800 text-midnight-600 dark:text-midnight-200 hover:bg-primary-50 dark:hover:bg-midnight-700'
-                }`}
+                className={`px-4 py-2 rounded-lg shadow-md transition-all ${filter === category
+                  ? 'bg-primary-600 text-white shadow-primary-500/25'
+                  : 'bg-white dark:bg-midnight-800 text-midnight-600 dark:text-midnight-200 hover:bg-primary-50 dark:hover:bg-midnight-700'
+                  }`}
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)} Projects
               </motion.button>
             ))}
           </div>
 
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"
             variants={staggerChildren}
           >

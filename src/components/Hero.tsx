@@ -1,20 +1,18 @@
 import React from 'react';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { HeroBackground } from './background/BackgroundPattern';
 
 const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center py-20 overflow-hidden">
-      <HeroBackground />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.h1 
+          <motion.h1
             className="text-4xl sm:text-6xl font-bold text-midnight-900 dark:text-white mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -23,8 +21,8 @@ const Hero: React.FC = () => {
             Frontend Developer &
             <span className="text-primary-600 dark:text-primary-400"> Web3 Specialist</span>
           </motion.h1>
-          
-          <motion.p 
+
+          <motion.p
             className="text-xl text-midnight-600 dark:text-midnight-200 mb-8 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -34,7 +32,7 @@ const Hero: React.FC = () => {
             Specialized in React, TypeScript, and modern frontend technologies.
           </motion.p>
 
-          <motion.div 
+          <motion.div
             className="flex justify-center space-x-4 mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -71,7 +69,7 @@ const Hero: React.FC = () => {
             </motion.a>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="flex flex-wrap justify-center gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

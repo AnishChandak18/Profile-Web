@@ -7,13 +7,15 @@ import Experience from './components/Experience';
 import ContactSection from './components/contact/ContactSection';
 import ScrollProgress from './components/ScrollProgress';
 import { useTheme } from './hooks/useTheme';
+import AnimatedBackground from './components/background/AnimatedBackground';
 
 function App() {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
     <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
-      <div className="bg-white dark:bg-midnight-900 transition-colors">
+      <AnimatedBackground isDarkMode={isDarkMode} />
+      <div className="bg-white dark:bg-midnight-900">
         <ScrollProgress />
         <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         <Hero />
