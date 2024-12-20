@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              href="https://github.com"
+              href="https://github.com/AnishChandak18"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-white dark:bg-midnight-800 shadow-lg hover:shadow-xl hover:bg-primary-50 dark:hover:bg-midnight-700 transition-all"
@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/anish-chandak-871655166"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-white dark:bg-midnight-800 shadow-lg hover:shadow-xl hover:bg-primary-50 dark:hover:bg-midnight-700 transition-all"
@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              href="mailto:your.email@example.com"
+              href="mailto:chandakanish0018@gmail.com"
               className="p-3 rounded-full bg-white dark:bg-midnight-800 shadow-lg hover:shadow-xl hover:bg-primary-50 dark:hover:bg-midnight-700 transition-all"
             >
               <Mail className="w-6 h-6 text-midnight-600 dark:text-midnight-200" />
