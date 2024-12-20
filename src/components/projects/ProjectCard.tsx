@@ -57,29 +57,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               {tech}
             </span>
           ))}
-        </div>
-        <div className="flex space-x-4">
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center text-midnight-600 dark:text-midnight-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-          >
-            <Github className="w-5 h-5 mr-1" />
-            Code
-          </motion.a>
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center text-midnight-600 dark:text-midnight-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-          >
-            <ExternalLink className="w-5 h-5 mr-1" />
-            Demo
-          </motion.a>
-        </div>
+        </div>        
       </div>
     </motion.div>
   );
