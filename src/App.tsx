@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Portfolio from './components/Portfolio';
-import Experience from './components/Experience';
-import ContactSection from './components/contact/ContactSection';
 import ScrollProgress from './components/ScrollProgress';
 import { useTheme } from './hooks/useTheme';
 import AnimatedBackground from './components/background/AnimatedBackground';
+
+const About = lazy(() => import('./components/About'));
+const Portfolio = lazy(() => import('./components/Portfolio'));
+const Experience = lazy(() => import('./components/Experience'));
+const ContactSection = lazy(() =>
+  import('./components/contact/ContactSection')
+);
+
+const SectionFallback = () => (
+  <div className="py-20 flex items-center justify-center">
+    <div className="h-8 w-8 rounded-full border-2 border-primary-600 border-t-transparent animate-spin" />
+  </div>
+);
 
 function App() {
   const { isDarkMode, toggleTheme } = useTheme();
@@ -19,10 +28,12 @@ function App() {
         <ScrollProgress />
         <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         <Hero />
-        <About />
-        <Portfolio />
-        <Experience />
-        <ContactSection />
+        <Suspense fallback={<SectionFallback />}>
+          <About />
+          <Portfolio />
+          <Experience />
+          <ContactSection />
+        </Suspense>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import ContactForm from './ContactForm';
+import { fadeInUp, staggerChildren } from '../animations/variants';
 
 const contactInfo = [
   {
@@ -32,23 +33,33 @@ const ContactSection: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          variants={staggerChildren}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: '-10%' }}
         >
-          <h2 className="text-3xl font-bold text-center text-midnight-900 dark:text-white mb-8">
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl font-bold text-center text-midnight-900 dark:text-white mb-8"
+          >
             Get in Touch
-          </h2>
-          <p className="text-lg text-midnight-600 dark:text-midnight-300 max-w-3xl mx-auto mb-12 text-center">
+          </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="text-lg text-midnight-600 dark:text-midnight-300 max-w-3xl mx-auto mb-12 text-center"
+          >
             Have a project in mind or want to explore collaboration
             opportunities? Feel free to reach out!
-          </p>
+          </motion.p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <motion.div
+            variants={staggerChildren}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
+          >
             {contactInfo.map((info) => (
               <motion.div
                 key={info.title}
+                variants={fadeInUp}
                 whileHover={{ y: -5 }}
                 className="bg-white dark:bg-midnight-900 p-6 rounded-xl shadow-lg text-center"
               >
@@ -61,7 +72,7 @@ const ContactSection: React.FC = () => {
                 {info.link ? (
                   <a
                     href={info.link}
-                    className="text-midnight-600 dark:text-midnight-300 hover:text-primary-600 dark:hover:text-primary-400"
+                    className="text-midnight-600 dark:text-midnight-300 hover:text-primary-600 dark:hover:text-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded"
                   >
                     {info.content}
                   </a>
@@ -72,13 +83,13 @@ const ContactSection: React.FC = () => {
                 )}
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="max-w-2xl mx-auto">
+          <motion.div variants={fadeInUp} className="max-w-2xl mx-auto">
             <div className="bg-white dark:bg-midnight-900 rounded-xl shadow-lg p-8">
               <ContactForm />
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

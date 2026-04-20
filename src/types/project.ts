@@ -3,7 +3,7 @@ export interface Project {
   description: string;
   image: string;
   technologies: string[];
-  github: string;
-  demo: string;
+  github?: string;
+  demo?: string;
   category: 'frontend' | 'web3';
 }

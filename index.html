@@ -2,10 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web3 Developer Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Anish Chandak — Senior Frontend Engineer & Tech Lead</title>
+    <meta
+      name="description"
+      content="Portfolio of Anish Chandak — Senior Frontend Engineer and Tech Lead with 6+ years building production-grade React and Next.js systems at scale."
+    />
+    <meta name="author" content="Anish Chandak" />
+    <meta name="theme-color" content="#25314d" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Anish Chandak — Senior Frontend Engineer & Tech Lead" />
+    <meta
+      property="og:description"
+      content="Portfolio of Anish Chandak — Senior Frontend Engineer and Tech Lead with 6+ years building production-grade React and Next.js systems at scale."
+    />
+    <meta property="og:url" content="https://anishchandak.dev/" />
+    <meta property="og:image" content="/og-image.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Anish Chandak — Senior Frontend Engineer & Tech Lead" />
+    <meta
+      name="twitter:description"
+      content="Portfolio of Anish Chandak — Senior Frontend Engineer and Tech Lead with 6+ years building production-grade React and Next.js systems at scale."
+    />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isDark = saved ? saved === 'dark' : prefersDark;
+          if (isDark) document.documentElement.classList.add('dark');
+        } catch (_) {}
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="root"></div>

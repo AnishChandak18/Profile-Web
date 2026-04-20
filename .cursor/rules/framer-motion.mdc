@@ -1,0 +1,23 @@
+---
+description: Framer Motion patterns for Profile-Web (variants, layout, presence)
+globs: src/**/*.{tsx,ts}
+alwaysApply: false
+---
+
+# Framer Motion
+
+- Use **functional components** only. Import `motion` and helpers from `framer-motion` as needed (`motion.div`, `motion.section`, etc.).
+- **Reuse shared motion props** from `src/components/animations/variants.ts` (`fadeInUp`, `staggerChildren`, `cardHover`, etc.) before defining one-off objects in a component.
+- **Lists and staggered children**: parent uses `variants={staggerChildren}` (or similar) with `initial="hidden"` / `animate="visible"` when using named variants; child items use stagger-friendly variants so timing stays consistent.
+- **`AnimatePresence`**: wrap content when components **mount and unmount** (modals, toasts, route-like swaps) so **exit** animations run; set `mode="wait"` when only one child should animate at a time.
+- **`layout` / `layoutId`**: use **`layout`** for smooth reflow when size/position changes in the same tree; use **`layoutId`** only when the same visual element is shared across two places (shared layout transitions). Avoid sprinkling `layout` on everything—prefer it for cards, lists, or toggles where it clearly helps.
+- **Performance**: prefer **`transform` and `opacity`** for ongoing motion; avoid animating **`box-shadow`**, **`filter`**, or **`width`/`height`** every frame unless necessary. Use **`will-change` sparingly** (usually not needed with transform/opacity).
+- **Springs**: keep `stiffness` / `damping` in the same ballpark as existing variants for a cohesive feel unless the design calls for a deliberate contrast.
+- **Tailwind**: keep layout and spacing in `className`; put motion-specific values in `transition`, `animate`, or variants rather than duplicating duration in CSS unless you need both.
+
+```tsx
+// Prefer importing shared variants
+import { fadeInUp } from '../animations/variants';
+
+<motion.div {...fadeInUp} transition={{ duration: 0.4 }} />
+```

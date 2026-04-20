@@ -1,22 +1,22 @@
 import React from 'react';
-import { Code2, Layout, Palette } from 'lucide-react';
+import { Code2, Layout, Gauge } from 'lucide-react';
 import SkillCard from './SkillCard';
 
 const frontendSkills = [
   {
     icon: <Code2 className="w-6 h-6" />,
-    title: 'Frontend Development',
-    technologies: ['React', 'TypeScript', 'Next.js', 'Vue.js'],
+    title: 'Core',
+    technologies: ['React', 'Next.js', 'TypeScript', 'Redux'],
   },
   {
     icon: <Layout className="w-6 h-6" />,
-    title: 'UI Frameworks',
-    technologies: ['Tailwind CSS', 'Material-UI', 'Styled Components', 'Sass'],
+    title: 'Architecture',
+    technologies: ['Microfrontends', 'SSR/ISR'],
   },
   {
-    icon: <Palette className="w-6 h-6" />,
-    title: 'Design & UX',
-    technologies: ['Figma', 'Responsive Design', 'Accessibility', 'UI Animation'],
+    icon: <Gauge className="w-6 h-6" />,
+    title: 'Performance',
+    technologies: ['Performance Optimisation'],
   },
 ];
 
