@@ -26,4 +26,23 @@ export const projects: Project[] = [
     technologies: ['React', 'TypeScript', 'OpenAI API', 'REST APIs'],
     category: 'frontend',
   },
+  {
+    title: 'Stadium Pulse',
+    description:
+      'Stadium Pulse is a full-stack web app for social IPL predictions: private circles, match-winner voting when polls open, and per-group leaderboards—fan engagement without stakes. Built with Next.js (App Router), React, TypeScript, and Tailwind CSS, it exposes RESTful APIs via Next.js Route Handlers for tournaments, votes, leaderboards, profiles, and joins, with server logic separated from the UI. Data lives in PostgreSQL via Prisma (relational modelling, migrations, indexes, constraints). Supabase handles authentication, SSR-friendly sessions, and middleware-protected routes; Row Level Security SQL supports database-aligned access control. Third-party REST integration supplies IPL fixture and schedule data with display metadata. The app delivers onboarding, dashboards, tournament creation, invite codes, voting, live and history views, results, leaderboards, and account flows—showing end-to-end full-stack work across frontend, backend, ORM, auth, and external APIs.',
+    image:
+      'https://images.unsplash.com/photo-1531415074967-36d4fd3bc9c3?auto=format&fit=crop&q=80&w=800',
+    technologies: [
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Prisma',
+      'PostgreSQL',
+      'Supabase',
+      'Tailwind CSS',
+      'REST APIs',
+    ],
+    category: 'frontend',
+    demo: 'https://stadium-pulse-app.vercel.app/',
+  },
 ];
