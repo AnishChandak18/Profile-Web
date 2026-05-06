@@ -1,48 +1,51 @@
-import { Project } from '../types/project';
+import { Project } from "../types/project";
 
 export const projects: Project[] = [
   {
-    title: 'Option/Future Trading Tool',
+    title: "Vault — Web3 Transaction Hub",
     description:
-      'Full-stack strategy backtesting platform enabling traders to simulate option/futures strategies using historical market data. Features configurable parameters, real-time P&L visualisation, and performance analytics. Built with performance optimisation for large financial datasets and responsive design across device sizes.',
-    image:
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
-    technologies: [
-      'React',
-      'TypeScript',
-      'Node.js',
-      'REST APIs',
-      'WebSockets',
-      'Charting Libraries',
+      "Next.js dashboard for simulating, sending, and analysing blockchain transactions. Features MetaMask wallet connection, real-time asset transfer tracking, token balances, net worth calculations, and transaction composition with live calldata decoding. ERC-20/ERC-721 function recognition, risk flagging, and decoded revert reasons powered by Alchemy.",
+    screenshots: [
+      "/images/Vault-screen1.png",
+      "/images/Vault-screen2.png",
+      "/images/Vault-screen3.png",
     ],
-    category: 'frontend',
+    technologies: [
+      "Next.js 14",
+      "TypeScript",
+      "Wagmi v2",
+      "RainbowKit",
+      "viem",
+      "Alchemy API",
+      "ethers v6",
+      "Recharts",
+      "TanStack Query",
+      "Tailwind CSS",
+    ],
+    category: "web3",
+    github: "https://github.com/AnishChandak18/Vault-Crypto-Dashboard",
+    demo: "https://vault-crypto-dashboard.vercel.app",
   },
   {
-    title: 'AI Note Keeper',
+    title: "Stadium Pulse",
     description:
-      'Productivity notes app integrating OpenAI API for auto-summarisation, smart tagging, and AI-assisted formatting. Built with component-driven architecture, scalable state management, and UX optimisation for daily-use tools. Includes rich-text editing, search, and tag-based organisation.',
-    image:
-      'https://images.unsplash.com/photo-1456406644174-8ddd4cd52a06?auto=format&fit=crop&q=80&w=800',
-    technologies: ['React', 'TypeScript', 'OpenAI API', 'REST APIs'],
-    category: 'frontend',
-  },
-  {
-    title: 'Stadium Pulse',
-    description:
-      'Stadium Pulse is a full-stack web app for social IPL predictions: private circles, match-winner voting when polls open, and per-group leaderboards—fan engagement without stakes. Built with Next.js (App Router), React, TypeScript, and Tailwind CSS, it exposes RESTful APIs via Next.js Route Handlers for tournaments, votes, leaderboards, profiles, and joins, with server logic separated from the UI. Data lives in PostgreSQL via Prisma (relational modelling, migrations, indexes, constraints). Supabase handles authentication, SSR-friendly sessions, and middleware-protected routes; Row Level Security SQL supports database-aligned access control. Third-party REST integration supplies IPL fixture and schedule data with display metadata. The app delivers onboarding, dashboards, tournament creation, invite codes, voting, live and history views, results, leaderboards, and account flows—showing end-to-end full-stack work across frontend, backend, ORM, auth, and external APIs.',
-    image:
-      'https://images.unsplash.com/photo-1531415074967-36d4fd3bc9c3?auto=format&fit=crop&q=80&w=800',
-    technologies: [
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Prisma',
-      'PostgreSQL',
-      'Supabase',
-      'Tailwind CSS',
-      'REST APIs',
+      "Full-stack social prediction app for IPL fans — private circles, match-winner polls, and per-group leaderboards. Built with Next.js App Router, Prisma, and PostgreSQL. Supabase handles auth, SSR sessions, and Row Level Security. Third-party REST integration supplies live fixture data.",
+    screenshots: [
+      "/images/Stadium-pulse-screen1.png",
+      "/images/Stadium-pulse-screen2.png",
+      "/images/Stadium-pulse-screen3.png",
     ],
-    category: 'frontend',
-    demo: 'https://stadium-pulse-app.vercel.app/',
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "Supabase",
+      "Tailwind CSS",
+      "REST APIs",
+    ],
+    category: "frontend",
+    github: "https://github.com/AnishChandak18/Polling-Tournament-Creator",
+    demo: "https://stadium-pulse-app.vercel.app/",
   },
 ];

@@ -1,26 +1,26 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone } from 'lucide-react';
-import ContactForm from './ContactForm';
-import { fadeInUp, staggerChildren } from '../animations/variants';
+import React from "react";
+import { motion } from "framer-motion";
+import { Mail, MapPin, Phone } from "lucide-react";
+import ContactForm from "./ContactForm";
+import { fadeInUp, staggerChildren } from "../animations/variants";
 
 const contactInfo = [
   {
     icon: <Mail className="w-6 h-6" />,
-    title: 'Email',
-    content: 'chandakanish0018@gmail.com',
-    link: 'mailto:chandakanish0018@gmail.com',
+    title: "Email",
+    content: "chandakanish0018@gmail.com",
+    link: "mailto:chandakanish0018@gmail.com",
   },
   {
     icon: <Phone className="w-6 h-6" />,
-    title: 'Phone',
-    content: '+91-7435886257',
-    link: 'tel:+917435886257',
+    title: "Phone",
+    content: "+91-7435886257",
+    link: "tel:+917435886257",
   },
   {
     icon: <MapPin className="w-6 h-6" />,
-    title: 'Location',
-    content: 'Silvassa, India',
+    title: "Location",
+    content: "Pune, India",
     link: null,
   },
 ];
@@ -36,7 +36,7 @@ const ContactSection: React.FC = () => {
           variants={staggerChildren}
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, margin: '-10%' }}
+          viewport={{ once: true, margin: "-10%" }}
         >
           <motion.h2
             variants={fadeInUp}

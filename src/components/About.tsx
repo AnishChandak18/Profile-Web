@@ -1,64 +1,257 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import FrontendSkills from './skills/FrontendSkills';
-import LeadershipSkills from './skills/LeadershipSkills';
-import DevOpsSkills from './skills/DevOpsSkills';
-import TestingSkills from './skills/TestingSkills';
-import { SectionBackground } from './background/BackgroundPattern';
-import { fadeInUp } from './animations/variants';
+import React, { useRef } from "react";
+import { motion, useInView, useSpring } from "framer-motion";
+import { useCountUp } from "@/hooks/useCountUp";
+import { cn } from "@/utils/cn";
+
+const techStack = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Node.js",
+  "GraphQL",
+  "Docker",
+  "AWS",
+  "PostgreSQL",
+  "Tailwind CSS",
+  "Jest",
+  "Kubernetes",
+  "Prisma",
+  "Redux",
+  "Vite",
+  "WebSockets",
+  "CI/CD",
+];
+
+interface StatCardProps {
+  value: number;
+  suffix?: string;
+  label: string;
+  color: string;
+  delay?: number;
+}
+
+const StatCard: React.FC<StatCardProps> = ({
+  value,
+  suffix = "",
+  label,
+  color,
+  delay = 0,
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const { count, start } = useCountUp(value, 1800);
+
+  React.useEffect(() => {
+    if (isInView) start();
+  }, [isInView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay, duration: 0.5 }}
+      className="glass-card rounded-2xl p-6 flex flex-col gap-1 hover:border-white/15 transition-all duration-300 group"
+    >
+      <span
+        className={cn("text-3xl sm:text-4xl font-bold tabular-nums", color)}
+      >
+        {count}
+        {suffix}
+      </span>
+      <span className="text-sm text-white/40 font-medium group-hover:text-white/60 transition-colors">
+        {label}
+      </span>
+    </motion.div>
+  );
+};
+
+const TiltCard: React.FC<{ children: React.ReactNode; className?: string }> = ({
+  children,
+  className,
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const rotateX = useSpring(0, { stiffness: 300, damping: 30 });
+  const rotateY = useSpring(0, { stiffness: 300, damping: 30 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    rotateY.set(x * 10);
+    rotateX.set(-y * 10);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => {
+        rotateX.set(0);
+        rotateY.set(0);
+      }}
+      style={{ rotateX, rotateY, transformPerspective: 800 }}
+      className={cn(
+        "glass-card rounded-2xl transition-shadow duration-300 hover:shadow-glass-hover",
+        className
+      )}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const About: React.FC = () => {
   return (
-    <section
-      id="about"
-      className="relative py-20 bg-midnight-50 dark:bg-midnight-950"
-    >
-      <SectionBackground />
+    <section id="about" className="relative py-28 bg-void overflow-hidden">
+      <div className="absolute inset-0 bg-grid opacity-30" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="relative max-w-6xl mx-auto px-6 sm:px-8">
+        {/* Section label */}
         <motion.div
-          variants={fadeInUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, margin: '-10%' }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex items-center gap-3 mb-4"
         >
-          <h2 className="text-3xl font-bold text-center text-midnight-900 dark:text-white mb-8">
-            About Me
-          </h2>
-          <p className="text-lg text-midnight-600 dark:text-midnight-300 max-w-3xl mx-auto mb-16 text-center">
-            Frontend engineer and tech lead with 6+ years building production-grade React and Next.js systems at scale. At Unifynd, led frontend delivery for 25K+ monthly users, cutting Shopify widget load time by 35% and compressing issue resolution from days to hours. At Knorex, managing 10 engineers across 3 parallel product tracks — shipping CI/CD pipelines that cut release failures 20%+ and a unified admin dashboard that reduced client onboarding time by 60%. Equally effective writing production code and unblocking teams.
-          </p>
-
-          <div className="space-y-16">
-            <div>
-              <h3 className="text-2xl font-semibold text-center text-midnight-900 dark:text-white mb-8">
-                Frontend Skills
-              </h3>
-              <FrontendSkills />
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-semibold text-center text-midnight-900 dark:text-white mb-8">
-                Leadership
-              </h3>
-              <LeadershipSkills />
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-semibold text-center text-midnight-900 dark:text-white mb-8">
-                DevOps & Infrastructure
-              </h3>
-              <DevOpsSkills />
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-semibold text-center text-midnight-900 dark:text-white mb-8">
-                Testing & Quality
-              </h3>
-              <TestingSkills />
-            </div>
-          </div>
+          <span className="font-mono text-xs text-electric-400 tracking-widest uppercase">
+            01 / About
+          </span>
+          <div className="flex-1 h-px bg-white/[0.06]" />
         </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-3xl sm:text-5xl font-bold text-white mb-16 leading-tight"
+        >
+          Building interfaces that{" "}
+          <span className="gradient-text">scale and perform</span>
+        </motion.h2>
+
+        {/* Bento grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-auto">
+          {/* Bio — spans 2 cols */}
+          <TiltCard className="md:col-span-2 p-8">
+            <p className="text-white/50 text-sm font-mono tracking-wider uppercase mb-4">
+              Background
+            </p>
+            <p className="text-white/75 text-base leading-relaxed">
+              Frontend engineer and tech lead with 6+ years building
+              production-grade React and Next.js systems at scale. I specialize
+              in performance architecture, team leadership, and translating
+              complex business requirements into elegant, maintainable UIs.
+            </p>
+            <p className="text-white/50 text-base leading-relaxed mt-4">
+              At Unifynd, led frontend delivery for 25K+ monthly users, cutting
+              load times by 35%. At Knorex, managing 10 engineers across 3
+              parallel product tracks.
+            </p>
+          </TiltCard>
+
+          {/* Availability */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+            className="glass-card rounded-2xl p-6 border border-neon-green/20 hover:border-neon-green/40 transition-all duration-300 flex flex-col justify-between"
+          >
+            <div className="flex items-center gap-2 mb-3">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-green opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-neon-green" />
+              </span>
+              <span className="text-xs font-mono text-neon-green/80 tracking-wider uppercase">
+                Available
+              </span>
+            </div>
+            <p className="text-white/70 text-sm leading-relaxed">
+              Open to senior / lead opportunities in React & Next.js ecosystems.
+            </p>
+            <p className="text-white/30 text-xs mt-4 font-mono">Pune, India</p>
+          </motion.div>
+
+          {/* Location / fun card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="glass-card rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-radial from-electric-600/10 to-transparent pointer-events-none" />
+            <p className="text-white/40 text-xs font-mono uppercase tracking-wider mb-3">
+              Currently at
+            </p>
+            <p className="text-white text-lg font-bold">Knorex</p>
+            <p className="text-white/40 text-sm">Technical Manager</p>
+            <p className="text-electric-400 text-xs font-mono mt-4">
+              Jan 2025 → Present
+            </p>
+          </motion.div>
+
+          {/* Stats row */}
+          <StatCard
+            value={6}
+            suffix="+"
+            label="Years Experience"
+            color="gradient-text"
+            delay={0.1}
+          />
+          <StatCard
+            value={25}
+            suffix="K+"
+            label="Users Served"
+            color="text-neon-cyan"
+            delay={0.15}
+          />
+          <StatCard
+            value={10}
+            label="Engineers Led"
+            color="text-neon-violet"
+            delay={0.2}
+          />
+          <StatCard
+            value={4}
+            label="Companies"
+            color="gradient-text-warm"
+            delay={0.25}
+          />
+
+          {/* Tech stack — full width */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="glass-card rounded-2xl p-8 md:col-span-3 lg:col-span-4"
+          >
+            <p className="text-white/40 text-xs font-mono uppercase tracking-wider mb-5">
+              Tech Stack
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {techStack.map((tech, i) => (
+                <motion.span
+                  key={tech}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.03 }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="px-3 py-1.5 rounded-lg glass electric-border text-xs font-mono text-white/60 hover:text-white transition-all duration-200 cursor-default"
+                >
+                  {tech}
+                </motion.span>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,23 +1,315 @@
+/* ── Fonts — must precede all other statements ── */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+/* ── Base reset ── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    /* Lenis overrides scroll-behavior */
+    scroll-behavior: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #09090F;
+    color: #F0F4FF;
+    overflow-x: hidden;
+  }
+
+  /* Hide native cursor — CustomCursor replaces it */
+  * {
+    cursor: none !important;
+  }
+
+  /* Restore cursor for touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    * { cursor: auto !important; }
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: rgba(99, 102, 241, 0.35);
+    color: #fff;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.4);
+    border-radius: 2px;
   }
 }
 
-html {
-  scroll-behavior: smooth;
+/* ── Utilities ── */
+@layer utilities {
+  /* Glassmorphism */
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* Electric glow border */
+  .electric-border {
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.15), inset 0 0 20px rgba(99, 102, 241, 0.05);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #818CF8, #22D3EE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-warm {
+    background: linear-gradient(135deg, #818CF8, #EC4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Background grid */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Noise texture overlay */
+  .bg-noise::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Shimmer animation */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.06) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2.5s linear infinite;
+  }
+
+  /* Prevent layout shift during page load */
+  .no-fouc {
+    visibility: hidden;
+  }
+  .no-fouc.ready {
+    visibility: visible;
+  }
 }
 
-body {
-  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
-    Arial, sans-serif;
+/* ── Lenis smooth scroll ── */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Light mode ─────────────────────────────────────────────────────────── */
+html:not(.dark) {
+  color-scheme: light;
+}
+
+html:not(.dark) body {
+  background-color: #ECF0FF;
+  color: #0F1117;
+}
+
+/* Section backgrounds */
+html:not(.dark) .bg-void {
+  background-color: #ECF0FF !important;
+}
+
+/* Hero bottom gradient: from-void → from light */
+html:not(.dark) .from-void {
+  --tw-gradient-from: #ECF0FF var(--tw-gradient-from-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(236 240 255 / 0)) !important;
+}
+
+/* Glass → white glass */
+html:not(.dark) .glass {
+  background: rgba(255, 255, 255, 0.62) !important;
+  border-color: rgba(15, 17, 23, 0.09) !important;
+}
+html:not(.dark) .glass-hover:hover {
+  background: rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(15, 17, 23, 0.15) !important;
+}
+html:not(.dark) .glass-card {
+  background: rgba(255, 255, 255, 0.70) !important;
+  border-color: rgba(15, 17, 23, 0.09) !important;
+}
+
+/* Grid lines */
+html:not(.dark) .bg-grid {
+  background-image:
+    linear-gradient(rgba(15, 17, 23, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 17, 23, 0.04) 1px, transparent 1px) !important;
+}
+
+/* ── Text color remapping (opacity tiers) ── */
+/* Base: all white-based text → near-black */
+html:not(.dark) [class*="text-white"] { color: rgba(15, 17, 23, 0.90) !important; }
+/* 90–99% → 90% dark */
+html:not(.dark) [class*="text-white\/9"] { color: rgba(15, 17, 23, 0.90) !important; }
+/* 80–89% → 82% dark */
+html:not(.dark) [class*="text-white\/8"] { color: rgba(15, 17, 23, 0.82) !important; }
+/* 70–79% → 74% dark */
+html:not(.dark) [class*="text-white\/7"] { color: rgba(15, 17, 23, 0.74) !important; }
+/* 60–69% → 65% dark */
+html:not(.dark) [class*="text-white\/6"] { color: rgba(15, 17, 23, 0.65) !important; }
+/* 50–59% → 56% dark */
+html:not(.dark) [class*="text-white\/5"] { color: rgba(15, 17, 23, 0.56) !important; }
+/* 40–49% → 47% dark */
+html:not(.dark) [class*="text-white\/4"] { color: rgba(15, 17, 23, 0.47) !important; }
+/* 30–39% → 38% dark */
+html:not(.dark) [class*="text-white\/3"] { color: rgba(15, 17, 23, 0.38) !important; }
+/* 20–29% → 27% dark */
+html:not(.dark) [class*="text-white\/2"] { color: rgba(15, 17, 23, 0.27) !important; }
+/* 10–19% → 18% dark */
+html:not(.dark) [class*="text-white\/1"] { color: rgba(15, 17, 23, 0.18) !important; }
+/* Arbitrary bracket values like /[0.06] */
+html:not(.dark) [class*="text-white/[0"] { color: rgba(15, 17, 23, 0.12) !important; }
+
+/* gradient-text uses -webkit-text-fill-color: transparent — color override is harmless */
+
+/* ── Border color remapping ── */
+html:not(.dark) [class*="border-white"] { border-color: rgba(15, 17, 23, 0.10) !important; }
+html:not(.dark) [class*="border-white/[0"] { border-color: rgba(15, 17, 23, 0.07) !important; }
+
+/* ── Small white-tinted backgrounds ── */
+html:not(.dark) [class*="bg-white\/"] { background-color: rgba(15, 17, 23, 0.05) !important; }
+
+/* ── Modal overlay and section overlays ── */
+html:not(.dark) .bg-void\/85 {
+  background-color: rgba(236, 240, 255, 0.92) !important;
+}
+html:not(.dark) .bg-void\/60 {
+  background-color: rgba(236, 240, 255, 0.72) !important;
+}
+
+/* ── Carousel / image container dark bg ── */
+html:not(.dark) .bg-midnight-950 {
+  background-color: #DDE3FF !important;
+}
+
+/* ── Preloader ── */
+html:not(.dark) .bg-void.fixed {
+  background-color: #ECF0FF !important;
+}
+
+/* ── Custom cursor ── */
+html:not(.dark) #custom-cursor {
+  background: #4338CA;
+  mix-blend-mode: multiply;
+}
+html:not(.dark) #cursor-follower {
+  border-color: rgba(67, 56, 202, 0.28);
+}
+
+/* ── Scrollbar ── */
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.35);
+}
+
+/* ── Custom cursor ── */
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #818CF8;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+  mix-blend-mode: screen;
+}
+
+#custom-cursor.cursor-hover {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 1.5px solid rgba(129, 140, 248, 0.8);
+  mix-blend-mode: normal;
+}
+
+#custom-cursor.cursor-clicking {
+  width: 8px;
+  height: 8px;
+  background: #818CF8;
+}
+
+#cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(129, 140, 248, 0.25);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
 }
