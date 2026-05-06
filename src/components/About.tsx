@@ -5,19 +5,51 @@ import { cn } from "@/utils/cn";
 
 const techStack = [
   // Frontend
-  "React", "Next.js", "TypeScript", "Three.js", "Framer Motion",
-  "Vue.js", "Redux", "Zustand", "Tailwind CSS", "Vite", "Webpack",
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Three.js",
+  "Framer Motion",
+  "Vue.js",
+  "Redux",
+  "Zustand",
+  "Tailwind CSS",
+  "Vite",
+  "Webpack",
   // Backend
-  "Node.js", "Express", "GraphQL", "REST APIs", "WebSockets",
-  "Prisma", "PostgreSQL", "MongoDB", "Redis", "Supabase", "Firebase",
+  "Node.js",
+  "Express",
+  "GraphQL",
+  "REST APIs",
+  "WebSockets",
+  "Prisma",
+  "PostgreSQL",
+  "MongoDB",
+  "Redis",
+  "Supabase",
+  "Firebase",
   // DevOps & Cloud
-  "Docker", "Kubernetes", "AWS", "GitHub Actions", "CI/CD", "Nginx", "Terraform",
+  "Docker",
+  "Kubernetes",
+  "AWS",
+  "GitHub Actions",
+  "CI/CD",
+  "Nginx",
+  "Terraform",
   // Web3
-  "Ethers.js", "Wagmi", "viem", "Alchemy",
+  "Ethers.js",
+  "Wagmi",
+  "viem",
+  "Alchemy",
   // Testing & Tooling
-  "Jest", "Playwright", "React Testing Library",
+  "Jest",
+  "Playwright",
+  "React Testing Library",
   // Architecture
-  "Microfrontend", "SSR / SSG", "Monorepo", "Design Systems",
+  "Microfrontend",
+  "SSR / SSG",
+  "Monorepo",
+  "Design Systems",
 ];
 
 interface StatCardProps {
@@ -144,7 +176,8 @@ const About: React.FC = () => {
               product delivery — spanning React micro-frontends, Node.js &
               GraphQL APIs, PostgreSQL schemas, Docker containers, and
               Kubernetes deployments. I operate across the entire stack and
-              bridge the gap between engineering execution and business outcomes.
+              bridge the gap between engineering execution and business
+              outcomes.
             </p>
             <p className="text-white/50 text-base leading-relaxed mt-4">
               At Knorex I manage 10 engineers across 3 product tracks while
@@ -176,9 +209,12 @@ const About: React.FC = () => {
             </div>
             <p className="text-white/70 text-sm leading-relaxed">
               Open to fullstack engineering, technical program management, and
-              engineering leadership roles. Comfortable as IC, tech lead, or TPM.
+              engineering leadership roles. Comfortable as IC, tech lead, or
+              TPM.
             </p>
-            <p className="text-white/30 text-xs mt-4 font-mono">Silvassa, India · Remote OK</p>
+            <p className="text-white/30 text-xs mt-4 font-mono">
+              Pune, India · Remote OK
+            </p>
           </motion.div>
 
           {/* Location / fun card */}
