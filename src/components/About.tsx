@@ -4,22 +4,20 @@ import { useCountUp } from "@/hooks/useCountUp";
 import { cn } from "@/utils/cn";
 
 const techStack = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Node.js",
-  "GraphQL",
-  "Docker",
-  "AWS",
-  "PostgreSQL",
-  "Tailwind CSS",
-  "Jest",
-  "Kubernetes",
-  "Prisma",
-  "Redux",
-  "Vite",
-  "WebSockets",
-  "CI/CD",
+  // Frontend
+  "React", "Next.js", "TypeScript", "Three.js", "Framer Motion",
+  "Vue.js", "Redux", "Zustand", "Tailwind CSS", "Vite", "Webpack",
+  // Backend
+  "Node.js", "Express", "GraphQL", "REST APIs", "WebSockets",
+  "Prisma", "PostgreSQL", "MongoDB", "Redis", "Supabase", "Firebase",
+  // DevOps & Cloud
+  "Docker", "Kubernetes", "AWS", "GitHub Actions", "CI/CD", "Nginx", "Terraform",
+  // Web3
+  "Ethers.js", "Wagmi", "viem", "Alchemy",
+  // Testing & Tooling
+  "Jest", "Playwright", "React Testing Library",
+  // Architecture
+  "Microfrontend", "SSR / SSG", "Monorepo", "Design Systems",
 ];
 
 interface StatCardProps {
@@ -130,8 +128,8 @@ const About: React.FC = () => {
           transition={{ delay: 0.1 }}
           className="text-3xl sm:text-5xl font-bold text-white mb-16 leading-tight"
         >
-          Building interfaces that{" "}
-          <span className="gradient-text">scale and perform</span>
+          From schema to deployment —{" "}
+          <span className="gradient-text">I ship the whole stack</span>
         </motion.h2>
 
         {/* Bento grid */}
@@ -142,15 +140,20 @@ const About: React.FC = () => {
               Background
             </p>
             <p className="text-white/75 text-base leading-relaxed">
-              Frontend engineer and tech lead with 6+ years building
-              production-grade React and Next.js systems at scale. I specialize
-              in performance architecture, team leadership, and translating
-              complex business requirements into elegant, maintainable UIs.
+              Fullstack technical program manager with 6+ years of end-to-end
+              product delivery — spanning React micro-frontends, Node.js &
+              GraphQL APIs, PostgreSQL schemas, Docker containers, and
+              Kubernetes deployments. I operate across the entire stack and
+              bridge the gap between engineering execution and business outcomes.
             </p>
             <p className="text-white/50 text-base leading-relaxed mt-4">
-              At Unifynd, led frontend delivery for 25K+ monthly users, cutting
-              load times by 35%. At Knorex, managing 10 engineers across 3
-              parallel product tracks.
+              At Knorex I manage 10 engineers across 3 product tracks while
+              personally architecting CI/CD infrastructure that cut deployment
+              time by 78%. At Unifynd I led full-stack delivery of loyalty
+              platforms serving 25K+ monthly users at 99.5% uptime. At Ivory
+              Technolabs I built a no-code AI storefront that onboarded 8+ D2C
+              brands in 4 months — handling everything from Prisma schema to SSR
+              caching strategy.
             </p>
           </TiltCard>
 
@@ -172,9 +175,10 @@ const About: React.FC = () => {
               </span>
             </div>
             <p className="text-white/70 text-sm leading-relaxed">
-              Open to senior / lead opportunities in React & Next.js ecosystems.
+              Open to fullstack engineering, technical program management, and
+              engineering leadership roles. Comfortable as IC, tech lead, or TPM.
             </p>
-            <p className="text-white/30 text-xs mt-4 font-mono">Pune, India</p>
+            <p className="text-white/30 text-xs mt-4 font-mono">Silvassa, India · Remote OK</p>
           </motion.div>
 
           {/* Location / fun card */}

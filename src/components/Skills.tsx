@@ -21,38 +21,51 @@ const categories: Category[] = [
     label: 'Frontend',
     icon: '⚡',
     skills: [
-      { name: 'React / Next.js', level: 95, color: '#818CF8' },
-      { name: 'TypeScript', level: 92, color: '#818CF8' },
-      { name: 'CSS / Tailwind', level: 90, color: '#22D3EE' },
-      { name: 'Performance Optimization', level: 88, color: '#22D3EE' },
-      { name: 'State Management (Redux / Zustand)', level: 85, color: '#8B5CF6' },
-      { name: 'Testing (Jest / RTL)', level: 82, color: '#8B5CF6' },
+      { name: 'React / Next.js',                    level: 95, color: '#818CF8' },
+      { name: 'TypeScript',                          level: 93, color: '#818CF8' },
+      { name: 'CSS / Tailwind / Design Systems',     level: 91, color: '#22D3EE' },
+      { name: 'Three.js / WebGL / Framer Motion',    level: 82, color: '#22D3EE' },
+      { name: 'State Management (Redux / Zustand)',   level: 88, color: '#8B5CF6' },
+      { name: 'Testing (Jest / RTL / Playwright)',    level: 84, color: '#8B5CF6' },
     ],
   },
   {
-    id: 'leadership',
-    label: 'Leadership',
-    icon: '🎯',
+    id: 'backend',
+    label: 'Backend',
+    icon: '🛠',
     skills: [
-      { name: 'Team Management (10 engineers)', level: 90, color: '#10B981' },
-      { name: 'Agile / Scrum', level: 92, color: '#10B981' },
-      { name: 'Technical Roadmapping', level: 88, color: '#22D3EE' },
-      { name: 'Code Reviews & Standards', level: 94, color: '#22D3EE' },
-      { name: 'Cross-functional Collaboration', level: 87, color: '#818CF8' },
-      { name: 'Mentorship & Onboarding', level: 85, color: '#818CF8' },
+      { name: 'Node.js / Express',                   level: 85, color: '#10B981' },
+      { name: 'GraphQL / REST APIs / WebSockets',    level: 83, color: '#10B981' },
+      { name: 'PostgreSQL / Prisma',                 level: 82, color: '#22D3EE' },
+      { name: 'MongoDB / Redis',                     level: 76, color: '#22D3EE' },
+      { name: 'Supabase / Firebase',                 level: 80, color: '#818CF8' },
+      { name: 'Ethers.js / Wagmi / Alchemy (Web3)',  level: 78, color: '#818CF8' },
     ],
   },
   {
     id: 'devops',
-    label: 'DevOps',
-    icon: '🔧',
+    label: 'DevOps & Cloud',
+    icon: '☁️',
     skills: [
-      { name: 'Docker / Kubernetes', level: 78, color: '#22D3EE' },
-      { name: 'AWS', level: 75, color: '#EC4899' },
-      { name: 'CI/CD Pipelines', level: 82, color: '#EC4899' },
-      { name: 'Node.js / REST APIs', level: 80, color: '#818CF8' },
-      { name: 'PostgreSQL / Prisma', level: 76, color: '#818CF8' },
-      { name: 'Supabase / Firebase', level: 72, color: '#8B5CF6' },
+      { name: 'Docker / Kubernetes',                 level: 83, color: '#22D3EE' },
+      { name: 'AWS (EC2, S3, ECS, Lambda)',          level: 80, color: '#EC4899' },
+      { name: 'CI/CD (GitHub Actions / Jenkins)',    level: 87, color: '#EC4899' },
+      { name: 'Nginx / Load Balancing',              level: 76, color: '#818CF8' },
+      { name: 'Terraform / IaC',                     level: 68, color: '#818CF8' },
+      { name: 'Monitoring (Grafana / Datadog)',       level: 72, color: '#8B5CF6' },
+    ],
+  },
+  {
+    id: 'program-mgmt',
+    label: 'Program Mgmt',
+    icon: '🎯',
+    skills: [
+      { name: 'Engineering Team Leadership (10+)',   level: 92, color: '#10B981' },
+      { name: 'Agile / Scrum / Kanban',              level: 94, color: '#10B981' },
+      { name: 'Technical Roadmapping & OKRs',        level: 90, color: '#22D3EE' },
+      { name: 'Stakeholder Management',              level: 88, color: '#22D3EE' },
+      { name: 'Risk & Dependency Management',        level: 85, color: '#818CF8' },
+      { name: 'Hiring, Mentorship & Onboarding',     level: 87, color: '#818CF8' },
     ],
   },
   {
@@ -60,12 +73,12 @@ const categories: Category[] = [
     label: 'Architecture',
     icon: '🏗',
     skills: [
-      { name: 'Microfrontend Architecture', level: 84, color: '#8B5CF6' },
-      { name: 'Component Systems & Design Tokens', level: 91, color: '#8B5CF6' },
-      { name: 'Bundle Optimization & Code Splitting', level: 88, color: '#818CF8' },
-      { name: 'Web Accessibility (WCAG)', level: 86, color: '#818CF8' },
-      { name: 'SSR / SSG (Next.js)', level: 89, color: '#22D3EE' },
-      { name: 'Monorepo (Nx / Turborepo)', level: 74, color: '#22D3EE' },
+      { name: 'Microfrontend Architecture',          level: 86, color: '#8B5CF6' },
+      { name: 'SSR / SSG / ISR (Next.js)',           level: 91, color: '#8B5CF6' },
+      { name: 'Bundle Optimization & Code Splitting', level: 89, color: '#818CF8' },
+      { name: 'Monorepo (Nx / Turborepo)',            level: 76, color: '#818CF8' },
+      { name: 'API Design & System Design',           level: 84, color: '#22D3EE' },
+      { name: 'Web Accessibility (WCAG)',             level: 86, color: '#22D3EE' },
     ],
   },
 ];
@@ -128,8 +141,8 @@ const Skills: React.FC = () => {
           transition={{ delay: 0.1 }}
           className="text-3xl sm:text-5xl font-bold text-white mb-12 leading-tight"
         >
-          What I bring to{' '}
-          <span className="gradient-text">the table</span>
+          Full-stack depth,{' '}
+          <span className="gradient-text">end-to-end</span>
         </motion.h2>
 
         {/* Category tabs */}

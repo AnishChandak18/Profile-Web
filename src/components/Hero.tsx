@@ -14,10 +14,11 @@ const socialLinks = [
 ];
 
 const roles = [
-  'Senior Frontend Engineer',
-  'Technical Manager',
-  'React & Next.js Specialist',
-  'Tech Lead',
+  'Technical Program Manager',
+  'Fullstack Engineer',
+  'Engineering Leader',
+  'System Architect',
+  'DevOps Practitioner',
 ];
 
 const Hero: React.FC = () => {
@@ -103,8 +104,9 @@ const Hero: React.FC = () => {
           transition={{ delay: 1, duration: 0.7 }}
           className="text-base sm:text-lg text-white/40 max-w-xl mx-auto mb-12 leading-relaxed"
         >
-          6+ years building production-grade React & Next.js systems.
-          Currently managing 10 engineers across 3 product tracks at Knorex.
+          6+ years shipping full-stack products — React micro-frontends,
+          Node.js APIs, Postgres schemas, Docker pipelines, and Kubernetes clusters.
+          I lead engineering teams and manage programs end-to-end.
         </motion.p>
 
         {/* CTAs */}
